@@ -1,5 +1,8 @@
+import { NavController, MenuController } from 'ionic-angular';
 
-import { Component } from '@angular/core';
+import { SettingsPage } from './../pages/settings/settings';
+
+import { Component, ViewChild } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -9,15 +12,24 @@ import { TabsPage } from './../pages/tabs/tabs';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
-
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  //rootPage:any = TabsPage;
+  tabsPage:any = TabsPage;
+  settingsPage:any = SettingsPage;
+@ViewChild('nav') root : NavController;
+  constructor(platform: Platform, statusBar: StatusBar,
+              splashScreen: SplashScreen,
+            private menuCtrl: MenuController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+  onLoad(page: any){
+      this.root.setRoot(page);
+      this.menuCtrl.close();
   }
 }
 
