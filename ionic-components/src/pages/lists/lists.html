@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Lists</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<!-- <ion-list no-lines inset> -->
+<ion-list >
+  <ion-item>
+      <ion-icon name="star" item-left></ion-icon>
+    A Normal item
+  </ion-item>
+  <ion-item>
+      <ion-icon name="star" item-right></ion-icon>
+   <h4>The heading of item</h4>
+   <p>Paragraphe item</p>
+  </ion-item>
+  <button ion-item> Button Item</button>
+</ion-list>
+
+<ion-item-group>
+  <ion-item-divider>A</ion-item-divider>
+  <ion-item>Apples</ion-item>
+  <ion-item>Avocados</ion-item>
+  <ion-item-divider>B</ion-item-divider>
+  <ion-item>Bananas</ion-item>
+  <ion-item>Berries</ion-item>
+</ion-item-group>
+
+<ion-list>
+  <ion-list-header>Privacy</ion-list-header>
+  <ion-item>Tracking</ion-item>
+  <ion-item>Personal image</ion-item>
+</ion-list>
+
+<ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
+  <ion-item *ngFor="let item of items"> {{item}} </ion-item>
+</ion-list>
+</ion-content>
