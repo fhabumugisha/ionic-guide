@@ -11,6 +11,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { ListsPage } from './../pages/lists/lists';
 import { GridPage } from '../pages/grid/grid';
 import { TouchEventComponent } from '../components/touch-event.component';
+import { GamePage } from '../pages/game/game';
+import { ResetComponent } from '../components/reset.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { TouchEventComponent } from '../components/touch-event.component';
     TabsPage,
     ListsPage,
     GridPage,
-    TouchEventComponent
+    TouchEventComponent,
+    GamePage,
+    ResetComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,8 @@ import { TouchEventComponent } from '../components/touch-event.component';
     HomePage,
     ListsPage,
     TabsPage,
-    GridPage
+    GridPage,
+    GamePage
   ],
   providers: [
     StatusBar,
