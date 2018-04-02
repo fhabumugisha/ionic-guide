@@ -1,0 +1,26 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Recipes</ion-title>
+  </ion-navbar>
+  <ion-buttons end>
+  <button ion-button (click)="onAddNewRecipe()"> + </button>
+  </ion-buttons>
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+      <button ion-item [navPush]="recipeDetail">
+        <h1>Spagetti</h1>
+        <p>Easy</p>
+      </button>
+      <button ion-item>
+        <h1>African coffee</h1>
+        <p>Easy</p>
+      </button>
+    </ion-list>
+
+</ion-content>

@@ -1,0 +1,37 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Shopping-list</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<form #f="ngForm" (ngSubmit)="onAddItem(f)" >
+  <ion-list>
+      <ion-item>
+          <ion-label fixed> Name </ion-label>
+          <ion-input name="ingredientName"
+                     type="text"
+                     placeholder="Milk"
+                     ngModel>
+                    </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Amount</ion-label>
+        <ion-input type="number"
+                   name="amount"
+                   placeholder="2"
+                   ngModel>
+                  </ion-input>
+        </ion-item>
+
+
+  </ion-list>
+  <div padding>
+      <button type="submit" ion-button block>Add</button>
+    </div>
+</form>
+</ion-content>
