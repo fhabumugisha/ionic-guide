@@ -1,7 +1,8 @@
-import { DetailRecipePage } from './../detail-recipe/detail-recipe';
-import { EditRecipePage } from './../edit-recipe/edit-recipe';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DetailRecipePage } from './../detail-recipe/detail-recipe';
+import { EditRecipePage } from './../edit-recipe/edit-recipe';
+
 
 
 @IonicPage()
@@ -11,7 +12,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RecipesPage {
   recipeDetail = DetailRecipePage;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController,
+              private navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -19,7 +21,14 @@ export class RecipesPage {
   }
 
   onAddNewRecipe() {
-    this.navCtrl.push(EditRecipePage);
+    this.navCtrl.push(EditRecipePage, {mode: 'New'}, {
+      animate:true,
+      direction:'forward',
+      easing:'ease-out',
+      duration:2000,
+      animation:'md-transition'
+
+    });
   }
 
 }

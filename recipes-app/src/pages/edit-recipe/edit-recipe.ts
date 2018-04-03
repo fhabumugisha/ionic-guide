@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 /**
@@ -13,13 +13,17 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
   selector: 'page-edit-recipe',
   templateUrl: 'edit-recipe.html',
 })
-export class EditRecipePage {
-
+export class EditRecipePage implements OnInit{
+  mode = 'New';
+  selectOptions = ['Easy','Medium','Hard'];
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private alertCtrl: AlertController) {
   }
 
+  ngOnInit(): void {
+    this.mode = this.navParams.get('mode');
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditRecipePage');
   }
@@ -38,7 +42,7 @@ export class EditRecipePage {
         },
         {
           text: 'Remove all ingredients',
-          
+
           handler : () => {
             console.log('Cancelled');
           }

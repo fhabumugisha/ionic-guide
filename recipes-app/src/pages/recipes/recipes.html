@@ -2,11 +2,14 @@
 <ion-header>
 
   <ion-navbar>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="onAddNewRecipe()">
+            <ion-icon name="add"></ion-icon>
+          </button>
+          </ion-buttons>
     <ion-title>Recipes</ion-title>
   </ion-navbar>
-  <ion-buttons end>
-  <button ion-button (click)="onAddNewRecipe()"> + </button>
-  </ion-buttons>
+
 </ion-header>
 
 
