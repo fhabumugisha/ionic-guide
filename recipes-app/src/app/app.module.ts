@@ -13,6 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { EditRecipePage } from '../pages/edit-recipe/edit-recipe';
 import { DetailRecipePage } from '../pages/detail-recipe/detail-recipe';
+import { ShoppingListService } from '../services/shopping-list.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DetailRecipePage } from '../pages/detail-recipe/detail-recipe';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ShoppingListService
   ]
 })
 export class AppModule {}

@@ -16,7 +16,8 @@
           <ion-input name="ingredientName"
                      type="text"
                      placeholder="Milk"
-                     ngModel>
+                     ngModel
+                     required>
                     </ion-input>
       </ion-item>
       <ion-item>
@@ -24,14 +25,29 @@
         <ion-input type="number"
                    name="amount"
                    placeholder="2"
-                   ngModel>
+                   ngModel
+                   required>
                   </ion-input>
         </ion-item>
 
 
   </ion-list>
   <div padding>
-      <button type="submit" ion-button block>Add</button>
+      <button type="submit" ion-button block [disabled]="!f.valid">Add</button>
     </div>
 </form>
+<ion-list>
+  <ion-item-sliding *ngFor="let ingr of ingredients, let i= index">
+      <ion-item>
+          {{ingr.name}} ({{ingr.amount}})
+      </ion-item>
+      <ion-item-options>
+          <button ion-button color="danger" (click)="onRemoveIngredient(i)">
+            <ion-icon name="trash"></ion-icon>Delete
+          </button>
+        </ion-item-options>
+
+  </ion-item-sliding>
+
+</ion-list>
 </ion-content>
