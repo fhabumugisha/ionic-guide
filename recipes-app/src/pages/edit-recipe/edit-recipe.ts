@@ -38,7 +38,7 @@ export class EditRecipePage {
         },
         {
           text: 'Remove all ingredients',
-          
+
           handler : () => {
             console.log('Cancelled');
           }

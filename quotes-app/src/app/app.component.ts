@@ -25,6 +25,14 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+    console.log(platform.platforms());
+    console.log(platform.height());
+    console.log(platform.width());
+    console.log(platform.isLandscape());
+    console.log(platform.isPortrait());
+    if(platform.is('android')){
+//only on android
+    }
   }
 
   onLoad(page: any){

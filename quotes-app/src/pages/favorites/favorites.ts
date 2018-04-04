@@ -1,7 +1,7 @@
 import { QuotePage } from './../quote/quote';
 import { QuotesService } from './../../services/quotes';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController, Navbar } from 'ionic-angular';
 import { Quote } from '../../data/quote.interface';
 import { SettingsService } from '../../services/settings';
 
@@ -15,6 +15,7 @@ import { SettingsService } from '../../services/settings';
 export class FavoritesPage {
 
   quotes: Quote[] = [];
+
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -33,6 +34,7 @@ export class FavoritesPage {
   }
   ionViewWillEnter(){
    this.quotes = this.quotesService.getFavoritesQuotes();
+
   }
 
   onViewQuote(selectedQuote: Quote){
