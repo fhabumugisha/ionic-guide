@@ -1,7 +1,11 @@
 import { QuotesService } from './../../services/quotes';
 import { Quote } from './../../data/quote.interface';
-import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component, OnInit
+  //, ViewChild
+ } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController
+  //,Navbar
+  } from 'ionic-angular';
 
 
 
@@ -13,7 +17,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 export class QuotesPage implements OnInit{
 
     quoteGroup : {category: string, quotes: Quote[], icon: string};
-
+  //  @ViewChild(Navbar) navBar : Navbar;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
   private alertCtrl : AlertController,
@@ -23,7 +27,9 @@ export class QuotesPage implements OnInit{
   ngOnInit(): void {
     this.quoteGroup = this.navParams.data;
   }
-
+ionViewWillEnter(){
+  //this.navBar.setBackButtonText('Library');
+}
   onAddToFavorites(selectedQuote: Quote){
     const alert = this.alertCtrl.create({
       title :'Add quote',
