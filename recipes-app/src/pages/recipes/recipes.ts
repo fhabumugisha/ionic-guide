@@ -38,8 +38,9 @@ export class RecipesPage {
     });
   }
 
-  onLoadRecipes(){
-    this.recipes =  this.recipesService.getRecipes();
-  }
 
+  onLoadRecipe(recipe: Recipe, index: number){
+    console.log('recipe : ' + recipe);
+    this.navCtrl.push(DetailRecipePage, {recipe: recipe, index: index});
+  }
 }

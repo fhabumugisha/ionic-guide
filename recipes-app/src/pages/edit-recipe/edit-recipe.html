@@ -48,8 +48,17 @@
 
 <ion-list formArrayName="ingredients">
   <ion-item *ngFor="let igControl of recipeForm.get('ingredients').controls; let i = index">
-    <ion-label floating>Name</ion-label>
-    <ion-input type="text" [formControlName]="i"></ion-input>
+   <ion-row>
+      <ion-col>
+          <ion-label floating>Name</ion-label>
+        <ion-input type="text" [formControlName]="i"></ion-input>
+      </ion-col>
+   <!--  <ion-col>
+   <!--  <ion-label floating>Amount</ion-label>
+    <!-- <ion-input type="number" [formControlName]="'amount'+i"></ion-input> -->
+    <!--   </ion-col>-->
+   </ion-row>
+
   </ion-item>
 </ion-list>
 
