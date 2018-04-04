@@ -2,12 +2,11 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-buttons>
+    <ion-buttons start>
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
           </button>
     </ion-buttons>
-
     <ion-title >My Favorites quotes</ion-title>
   </ion-navbar>
 
@@ -16,13 +15,13 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item-sliding *ngFor="let quote of quotes">
+    <ion-item-sliding *ngFor="let quote of quotes" (ionSwipe)="onRemoveFromFavorites(quote)">
       <ion-item  (click)="onViewQuote(quote)" [color]="getBackground()">
           <h2>{{quote.person}}</h2>
          <p>{{quote.text}}</p>
       </ion-item>
       <ion-item-options>
-        <button ion-button color="danger" (click)="onRemoveFromFavorites(quote)">
+        <button ion-button color="danger" expandable  (click)="onRemoveFromFavorites(quote)">
           <ion-icon name="trash"></ion-icon>Delete
         </button>
       </ion-item-options>
