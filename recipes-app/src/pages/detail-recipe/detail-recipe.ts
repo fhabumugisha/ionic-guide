@@ -3,7 +3,7 @@ import { EditRecipePage } from './../edit-recipe/edit-recipe';
 import { ShoppingListService } from './../../services/shopping-list.service';
 import { Recipe } from './../../models/recipe';
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 
 
 @IonicPage()
@@ -19,7 +19,8 @@ export class DetailRecipePage implements OnInit{
               public navParams: NavParams,
               private toastCtrl: ToastController,
               private slServicice: ShoppingListService,
-              private recipesService: RecipesService) {
+              private recipesService: RecipesService,
+              private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -43,9 +44,26 @@ export class DetailRecipePage implements OnInit{
     this.navCtrl.push(EditRecipePage, {mode: 'Edit', recipe: this.recipe, index: this.index});
   }
   onDeleteRecipe(){
-    this.recipesService.deleteRecipe(this.index);
-    this.navCtrl.popToRoot();
-    this.presentToast('Recipe deleted');
+   const alert = this.alertCtrl.create({
+      title: 'Are you sure oy want to delele this recipe ?',
+
+      buttons: [
+        {
+          text: 'No, cancel',
+          role: 'cancel'
+        },
+        {
+          text : 'Yes, go ahead',
+          handler: () => {
+            this.recipesService.deleteRecipe(this.index);
+            this.navCtrl.popToRoot();
+            this.presentToast('Recipe deleted');
+          }
+        }
+      ]
+    });
+
+    alert.present();
   }
 
   presentToast(theMessage: string){

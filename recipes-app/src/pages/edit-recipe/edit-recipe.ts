@@ -47,13 +47,18 @@ export class EditRecipePage implements OnInit{
     let title = null;
     let description = null;
     let difficulty = 'Medium';
-    let ingredients = [];
+    let recipeIngredients = new FormArray([]);;
     if(this.mode == 'Edit'){
        title = this.recipe.title;
      description = this.recipe.description;
      difficulty = this.recipe.difficulty;
      for(let ingredient of this.recipe.ingredients){
-      ingredients.push(new FormControl(ingredient.name, Validators.required));
+      recipeIngredients.push(
+        new FormGroup({
+            'name' :   new FormControl(ingredient.name, Validators.required),
+            'amount':   new FormControl(ingredient.amount, Validators.required)
+             })
+      );
      }
 
     }
@@ -61,7 +66,7 @@ export class EditRecipePage implements OnInit{
       'title': new FormControl(title, Validators.required),
       'description': new FormControl(description, Validators.required),
       'difficulty': new FormControl(difficulty,Validators.required ),
-      'ingredients' : new FormArray(ingredients)
+      'ingredients' : recipeIngredients
 
     });
   }
@@ -71,8 +76,9 @@ export class EditRecipePage implements OnInit{
     let value = this.recipeForm.value;
     let ingredients =  [];
     if(value.ingredients.length > 0){
-      ingredients = value.ingredients.map(name => {
-        return {name: name, amount: 1};
+      console.log('Ingredients : ' +  value.ingredients);
+      ingredients = value.ingredients.map(data => {
+        return {name: data.name, amount: data.amount};
       });
     }
     let recipe = new Recipe(value.title, value.description, value.difficulty, ingredients);
@@ -151,17 +157,33 @@ presentToast(theMessage: string){
      {
        text : 'Add',
        handler: data => {
+         console.log('Data :  name : ' + data.name + ", amount : " + data.amount);
          if(data.name.trim() == '' ||data.name  == null){
             this.presentToast('Please enter a valid value!');
             return;
          }
-        (<FormArray>this.recipeForm.get('ingredients')).push(new FormControl(data.name, Validators.required));
-        /* (<FormArray>this.recipeForm.get('ingredients')).push(new FormControl(data.amount, Validators.required)); */
+        (<FormArray>this.recipeForm.get('ingredients')).push(
+          new FormGroup({
+            'name' :   new FormControl(data.name, Validators.required),
+            'amount':   new FormControl(data.amount, Validators.required)
+             })
+        );
+
         this.presentToast('Ingredient added!');
        }
      }
    ]
  });
 
+  }
+
+
+
+  onDeleteIngredient(index: number){
+    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+  }
+
+  getControls() {
+    return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
 }
