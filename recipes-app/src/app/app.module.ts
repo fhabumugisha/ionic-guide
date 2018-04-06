@@ -4,13 +4,13 @@ import { SigninPage } from './../pages/signin/signin';
 import { RecipesService } from './../services/recipes';
 import { ShoppingListPage } from './../pages/shopping-list/shopping-list';
 import { RecipesPage } from './../pages/recipes/recipes';
-
+import {SLOptionsPage } from './../pages/shopping-list/sl-options/sl-options';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-
+import { HttpClientModule } from '@angular/common/http'
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -28,10 +28,12 @@ import { ShoppingListService } from '../services/shopping-list.service';
     DetailRecipePage,
     SigninPage,
     SignupPage,
+    SLOptionsPage,
     TabsPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -43,6 +45,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
     DetailRecipePage,
     SigninPage,
     SignupPage,
+    SLOptionsPage,
     TabsPage
   ],
   providers: [

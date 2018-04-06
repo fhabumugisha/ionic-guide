@@ -1,7 +1,7 @@
 import { AuthService } from './../../services/auth';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 
 
 
@@ -14,7 +14,9 @@ export class SignupPage implements OnInit {
   signupForm : FormGroup;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private loadingCtrl: LoadingController,
+              private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -34,12 +36,27 @@ export class SignupPage implements OnInit {
   }
   onSubmit(){
       console.log(this.signupForm);
+      const loading = this.loadingCtrl.create({
+        content: "Signing you up..."
+      });
+      loading.present();
       this.authService.signup(this.signupForm.value.email, this.signupForm.value.password)
       .then(
-        data => console.log(data)
+        data => {
+         loading.dismiss();
+        }
       )
       .catch(
-        error =>  console.log(error)
+        error =>  {
+          loading.dismiss();
+          const alert = this.alertCtrl.create({
+            title : 'Signup failed',
+            message : error.message,
+            buttons : ['Ok']
+          });
+          alert.present();
+
+        }
       );
   }
 
