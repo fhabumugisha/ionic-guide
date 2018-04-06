@@ -1,7 +1,14 @@
 import { Ingredient } from "../models/ingredient";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { AuthService } from "./auth";
 
+@Injectable()
 export class ShoppingListService {
   ingredients: Ingredient[] = [];
+
+  constructor(private http: HttpClient,
+  private authService: AuthService){}
 
   /**
    *
@@ -49,5 +56,21 @@ removeIngredient(ingredient: Ingredient){
  */
 removeItem(index: number){
   this.ingredients.splice(index, 1);
+}
+
+storeList(token: string){
+  const userId = this.authService.getActiveUser().uid;
+ return this.http.put('https://ion-recipes-book.firebaseio.com/' + userId + '/shopping-list.json?auth='+token, this.ingredients);
+}
+
+fecthList(token: string){
+  const userId = this.authService.getActiveUser().uid;
+  return this.http.get('https://ion-recipes-book.firebaseio.com/' + userId + '/shopping-list.json?auth='+token)
+  .subscribe(
+    (data : Ingredient[]) => {
+      this.ingredients = data;
+    }
+  );
+
 }
 }

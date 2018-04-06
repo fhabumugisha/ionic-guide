@@ -5,7 +5,8 @@ import {
   IonicPage,
   NavController,
   NavParams,
-  PopoverController
+  PopoverController,
+  ToastController
 } from "ionic-angular";
 import { NgForm } from "@angular/forms";
 import { ShoppingListService } from "../../services/shopping-list.service";
@@ -24,7 +25,8 @@ export class ShoppingListPage {
     public navParams: NavParams,
     private slService: ShoppingListService,
     private popoverCtrl: PopoverController,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastCtrl: ToastController,
   ) {}
 
   ionViewWillEnter() {
@@ -56,16 +58,49 @@ export class ShoppingListPage {
     popover.present({ ev: event });
     popover.onDidDismiss(data =>{
       if(data.action == 'load'){
-
+        this.authService.getActiveUser()
+        .getToken()
+        .then(
+          (token: string) => {
+              this.slService.fecthList(token)
+              .subscribe(
+                (list: Ingredient[]) => {
+                   if(list){
+                      this.ingredients = list;
+                   }else{
+                    this.ingredients = [];
+                   }
+                } ,
+                error =>{
+                  console.log(error);
+                }
+              );
+          }
+        );
       }else{
         this.authService.getActiveUser()
         .getToken()
         .then(
           (token: string) => {
-
+              this.slService.storeList(token)
+              .subscribe(
+                () => {
+                   this.presentToast('Data stored with succes!');
+                } ,
+                error =>{
+                  console.log(error);
+                }
+              );
           }
         );
       }
     })
+  }
+  presentToast(theMessage: string){
+    let toast = this.toastCtrl.create({
+      message: theMessage ,
+      duration: 1500
+    });
+    toast.present();
   }
 }
