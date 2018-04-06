@@ -1,3 +1,6 @@
+import { AuthService } from './../services/auth';
+import { SignupPage } from './../pages/signup/signup';
+import { SigninPage } from './../pages/signin/signin';
 import { RecipesService } from './../services/recipes';
 import { ShoppingListPage } from './../pages/shopping-list/shopping-list';
 import { RecipesPage } from './../pages/recipes/recipes';
@@ -23,6 +26,8 @@ import { ShoppingListService } from '../services/shopping-list.service';
     RecipesPage,
     EditRecipePage,
     DetailRecipePage,
+    SigninPage,
+    SignupPage,
     TabsPage
   ],
   imports: [
@@ -36,6 +41,8 @@ import { ShoppingListService } from '../services/shopping-list.service';
     RecipesPage,
     EditRecipePage,
     DetailRecipePage,
+    SigninPage,
+    SignupPage,
     TabsPage
   ],
   providers: [
@@ -43,7 +50,8 @@ import { ShoppingListService } from '../services/shopping-list.service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ShoppingListService,
-    RecipesService
+    RecipesService,
+    AuthService
   ]
 })
 export class AppModule {}

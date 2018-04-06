@@ -1,0 +1,39 @@
+
+<ion-header>
+
+  <ion-navbar>
+      <ion-buttons left>
+          <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+            </button>
+      </ion-buttons>
+    <ion-title text-center>Signin</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()" >
+      <ion-list>
+        <ion-item>
+            <ion-label floating> Email</ion-label>
+            <ion-input type="email"
+                       formControlName="email"
+                       ></ion-input>
+                      </ion-item>
+
+                      <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password"
+                       formControlName="password"
+                       ></ion-input>
+                      </ion-item>
+        </ion-list>
+              <button type="submit" ion-button block [disabled]="!signinForm.valid">Signin</button>
+
+
+  </form>
+
+</ion-content>
