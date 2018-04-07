@@ -1,23 +1,23 @@
-import { AuthService } from './../services/auth';
-import { SignupPage } from './../pages/signup/signup';
-import { SigninPage } from './../pages/signin/signin';
-import { RecipesService } from './../services/recipes';
-import { ShoppingListPage } from './../pages/shopping-list/shopping-list';
-import { RecipesPage } from './../pages/recipes/recipes';
-import {SLOptionsPage } from './../pages/shopping-list/sl-options/sl-options';
-import { NgModule, ErrorHandler } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { AuthService } from "./../services/auth";
+import { SignupPage } from "./../pages/signup/signup";
+import { SigninPage } from "./../pages/signin/signin";
+import { RecipesService } from "./../services/recipes";
+import { ShoppingListPage } from "./../pages/shopping-list/shopping-list";
+import { RecipesPage } from "./../pages/recipes/recipes";
+import { DBOptionsPage } from "../pages/database-options/database-options";
+import { NgModule, ErrorHandler } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { IonicApp, IonicModule, IonicErrorHandler } from "ionic-angular";
+import { MyApp } from "./app.component";
 
-import { HttpClientModule } from '@angular/common/http'
-import { TabsPage } from '../pages/tabs/tabs';
+import { HttpClientModule } from "@angular/common/http";
+import { TabsPage } from "../pages/tabs/tabs";
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { EditRecipePage } from '../pages/edit-recipe/edit-recipe';
-import { DetailRecipePage } from '../pages/detail-recipe/detail-recipe';
-import { ShoppingListService } from '../services/shopping-list.service';
+import { StatusBar } from "@ionic-native/status-bar";
+import { SplashScreen } from "@ionic-native/splash-screen";
+import { EditRecipePage } from "../pages/edit-recipe/edit-recipe";
+import { DetailRecipePage } from "../pages/detail-recipe/detail-recipe";
+import { ShoppingListService } from "../services/shopping-list.service";
 
 @NgModule({
   declarations: [
@@ -28,14 +28,10 @@ import { ShoppingListService } from '../services/shopping-list.service';
     DetailRecipePage,
     SigninPage,
     SignupPage,
-    SLOptionsPage,
+    DBOptionsPage,
     TabsPage
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    IonicModule.forRoot(MyApp)
-  ],
+  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(MyApp)],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -45,13 +41,13 @@ import { ShoppingListService } from '../services/shopping-list.service';
     DetailRecipePage,
     SigninPage,
     SignupPage,
-    SLOptionsPage,
+    DBOptionsPage,
     TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     ShoppingListService,
     RecipesService,
     AuthService

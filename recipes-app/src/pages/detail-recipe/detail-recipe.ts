@@ -38,7 +38,7 @@ export class DetailRecipePage implements OnInit{
 
   onAddIngredients(){
     this.slServicice.addIngredients(this.recipe.ingredients);
-    this.presentToast('Ingredients added to shopping list');
+    this.presentToast('Ingredients added to shopping list', 'successToast');
   }
   onEditRecipe(){
     this.navCtrl.push(EditRecipePage, {mode: 'Edit', recipe: this.recipe, index: this.index});
@@ -57,7 +57,7 @@ export class DetailRecipePage implements OnInit{
           handler: () => {
             this.recipesService.deleteRecipe(this.index);
             this.navCtrl.popToRoot();
-            this.presentToast('Recipe deleted');
+            this.presentToast('Recipe deleted', 'successToast');
           }
         }
       ]
@@ -66,10 +66,11 @@ export class DetailRecipePage implements OnInit{
     alert.present();
   }
 
-  presentToast(theMessage: string){
+  presentToast(theMessage: string, cssClass: string){
     let toast = this.toastCtrl.create({
       message: theMessage ,
-      duration: 1500
+      duration: 1500,
+      cssClass : cssClass
     });
     toast.present();
   }

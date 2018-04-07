@@ -1,3 +1,4 @@
+import { DBOptionsPage } from "./../database-options/database-options";
 import { OnInit } from "@angular/core";
 import { Ingredient } from "../../models/ingredient";
 import { Component } from "@angular/core";
@@ -6,11 +7,12 @@ import {
   NavController,
   NavParams,
   PopoverController,
-  ToastController
+  ToastController,
+  LoadingController
 } from "ionic-angular";
 import { NgForm } from "@angular/forms";
 import { ShoppingListService } from "../../services/shopping-list.service";
-import { SLOptionsPage } from "./sl-options/sl-options";
+
 import { AuthService } from "../../services/auth";
 
 @IonicPage()
@@ -27,6 +29,7 @@ export class ShoppingListPage {
     private popoverCtrl: PopoverController,
     private authService: AuthService,
     private toastCtrl: ToastController,
+    private loadingCtrl: LoadingController
   ) {}
 
   ionViewWillEnter() {
@@ -54,52 +57,72 @@ export class ShoppingListPage {
   }
 
   onShowOptions(event: MouseEvent) {
-    const popover = this.popoverCtrl.create(SLOptionsPage);
+    const popover = this.popoverCtrl.create(DBOptionsPage);
     popover.present({ ev: event });
-    popover.onDidDismiss(data =>{
-      if(data.action == 'load'){
-        this.authService.getActiveUser()
-        .getToken()
-        .then(
-          (token: string) => {
-              this.slService.fecthList(token)
-              .subscribe(
-                (list: Ingredient[]) => {
-                   if(list){
-                      this.ingredients = list;
-                   }else{
-                    this.ingredients = [];
-                   }
-                } ,
-                error =>{
-                  console.log(error);
-                }
-              );
-          }
-        );
-      }else{
-        this.authService.getActiveUser()
-        .getToken()
-        .then(
-          (token: string) => {
-              this.slService.storeList(token)
-              .subscribe(
-                () => {
-                   this.presentToast('Data stored with succes!');
-                } ,
-                error =>{
-                  console.log(error);
-                }
-              );
-          }
-        );
+    popover.onDidDismiss(data => {
+      if (!data) {
+        return;
       }
-    })
+      if (data.action == "load") {
+        const loading = this.loadingCtrl.create({
+          spinner: "crescent",
+          content: "Loading list..."
+        });
+        loading.present();
+        this.authService
+          .getActiveUser()
+          .getToken()
+          .then((token: string) => {
+            this.slService.fecthList(token).subscribe(
+              (list: Ingredient[]) => {
+                if (list) {
+                  this.ingredients = list;
+                } else {
+                  this.ingredients = [];
+                }
+                loading.dismiss();
+              },
+              error => {
+                loading.dismiss();
+                console.log(error);
+              }
+            );
+          });
+      } else if (data.action == "save") {
+        const loading = this.loadingCtrl.create({
+          spinner: "crescent",
+          content: "Saving data..."
+        });
+        loading.present();
+        this.authService
+          .getActiveUser()
+          .getToken()
+          .then((token: string) => {
+            this.slService.storeList(token).subscribe(
+              () => {
+                loading.dismiss();
+                this.presentToast("Data stored with succes!", "successToast");
+              },
+              error => {
+                console.log(error);
+                loading.dismiss();
+              }
+            );
+          });
+      }
+    });
   }
-  presentToast(theMessage: string){
+
+  /**
+   * Show the toast
+   * @param theMessage : the message
+   * @param cssClass : the css class
+   */
+  presentToast(theMessage: string, cssClass: string) {
     let toast = this.toastCtrl.create({
-      message: theMessage ,
-      duration: 1500
+      message: theMessage,
+      duration: 1500,
+      cssClass: cssClass
     });
     toast.present();
   }

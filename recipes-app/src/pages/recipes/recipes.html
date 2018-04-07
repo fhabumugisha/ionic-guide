@@ -1,17 +1,19 @@
-
 <ion-header>
 
   <ion-navbar>
-      <ion-buttons left>
-          <button ion-button menuToggle>
-              <ion-icon name="menu"></ion-icon>
-            </button>
-      </ion-buttons>
-      <ion-buttons right>
-          <button ion-button icon-only (click)="onAddNewRecipe()">
-            <ion-icon name="add"></ion-icon>
-          </button>
-          </ion-buttons>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="onAddNewRecipe()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="onShowOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Recipes</ion-title>
   </ion-navbar>
 
@@ -20,15 +22,14 @@
 
 <ion-content padding>
 
-    <ion-list>
-      <button *ngFor="let recipe of recipes; let i = index "
-             ion-item (click)="onLoadRecipe(recipe, i)">
-        <h1>{{recipe.title}}</h1>
-        <ion-note>{{recipe.description}}</ion-note>
+  <ion-list>
+    <button *ngFor="let recipe of recipes; let i = index " ion-item (click)="onLoadRecipe(recipe, i)">
+      <h1>{{recipe.title}}</h1>
+      <ion-note>{{recipe.description}}</ion-note>
 
-      </button>
+    </button>
 
 
-    </ion-list>
+  </ion-list>
 
 </ion-content>
