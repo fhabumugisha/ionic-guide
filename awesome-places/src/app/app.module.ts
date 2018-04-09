@@ -10,7 +10,8 @@ import { StatusBar } from "@ionic-native/status-bar";
 import { MyApp } from "./app.component";
 import { HomePage } from "../pages/home/home";
 import { AgmCoreModule } from "@agm/core";
-
+import { Geolocation } from "@ionic-native/geolocation";
+import { Camera } from "@ionic-native/camera";
 @NgModule({
   declarations: [MyApp, HomePage, PlacePage, AddPlacePage, SetLocationPage],
   imports: [
@@ -18,7 +19,6 @@ import { AgmCoreModule } from "@agm/core";
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyD_p0nurEcIMPaKUPm6uX456VU7u9kV-vA"
-      
     })
   ],
   bootstrap: [IonicApp],
@@ -26,7 +26,9 @@ import { AgmCoreModule } from "@agm/core";
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    Geolocation,
+    Camera
   ]
 })
 export class AppModule {}
