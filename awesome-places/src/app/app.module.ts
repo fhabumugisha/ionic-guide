@@ -12,6 +12,7 @@ import { HomePage } from "../pages/home/home";
 import { AgmCoreModule } from "@agm/core";
 import { Geolocation } from "@ionic-native/geolocation";
 import { Camera } from "@ionic-native/camera";
+import { PlacesService } from "../services/places";
 @NgModule({
   declarations: [MyApp, HomePage, PlacePage, AddPlacePage, SetLocationPage],
   imports: [
@@ -28,7 +29,8 @@ import { Camera } from "@ionic-native/camera";
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     Geolocation,
-    Camera
+    Camera,
+    PlacesService
   ]
 })
 export class AppModule {}

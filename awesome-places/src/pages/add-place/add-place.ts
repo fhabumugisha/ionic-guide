@@ -12,6 +12,7 @@ import {
 import { SetLocationPage } from "../set-location/set-location";
 import { Geolocation } from "@ionic-native/geolocation";
 import { Camera, CameraOptions } from "@ionic-native/camera";
+import { PlacesService } from "../../services/places";
 @IonicPage()
 @Component({
   selector: "page-add-place",
@@ -20,7 +21,7 @@ import { Camera, CameraOptions } from "@ionic-native/camera";
 export class AddPlacePage {
   location: Location = new Location(51.678418, 7.809007);
   locationIsSet = false;
-  imageUrl = '';
+  imageUrl = "";
   /**
    *
    */
@@ -31,7 +32,8 @@ export class AddPlacePage {
     private geolocation: Geolocation,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private camera: Camera
+    private camera: Camera,
+    private placesService: PlacesService
   ) {}
 
   ionViewDidLoad() {
@@ -39,7 +41,16 @@ export class AddPlacePage {
   }
 
   onSubmit(f: NgForm) {
-    console.log(f.value);
+    this.placesService.addPlace(
+      f.value.title,
+      f.value.description,
+      this.location,
+      this.imageUrl
+    );
+    f.reset();
+    this.imageUrl = "";
+    this.location = new Location(51.678418, 7.809007);
+    this.locationIsSet = false;
   }
   onLocate() {
     let load = this.loadingCtrl.create({
@@ -79,16 +90,16 @@ export class AddPlacePage {
   onTakePhoto() {
     const options: CameraOptions = {
       quality: 100,
-     // destinationType: this.camera.DestinationType.DATA_URL,
+      // destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       correctOrientation: true
     };
     this.camera
       .getPicture(options)
-      .then((imageData) => {
-        console.log('ImageData : ', imageData);
-        this.imageUrl =  imageData;
+      .then(imageData => {
+        console.log("ImageData : ", imageData);
+        this.imageUrl = imageData;
       })
       .catch(error => {
         console.log("Error getting location ", error);
