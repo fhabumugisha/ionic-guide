@@ -106,8 +106,9 @@ export class AddPlacePage {
       .then(imageData => {
         let imageName = imageData.replace(/^.*[\\\/]/, "");
         let path = imageData.replace(/[^\/]*$/, "");
+        let newImageName = new Date().getUTCMilliseconds() + ".jpg";
         this.file
-          .moveFile(path, imageName, cordova.file.dataDirectory, imageName)
+          .moveFile(path, imageName, cordova.file.dataDirectory, newImageName)
           .then((data: Entry) => {
             this.imageUrl = data.nativeURL;
             this.camera.cleanup();

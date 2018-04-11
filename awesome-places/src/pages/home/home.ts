@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.placesService.fecthPlaces().then((places: Place[]) => {
+    this.placesService.fetchPlaces().then((places: Place[]) => {
       this.places = places;
     });
   }

@@ -8,8 +8,14 @@ declare var cordova: any;
 export class PlacesService {
   places: Place[] = [];
 
-  constructor(public storage: Storage, private file: File) {}
-
+  constructor(private storage: Storage, private file: File) {}
+  /**
+   *
+   * @param title
+   * @param description
+   * @param location
+   * @param imageUrl
+   */
   addPlace(
     title: string,
     description: string,
@@ -34,17 +40,14 @@ export class PlacesService {
   /**
    * Fecth places from DB
    */
-  fecthPlaces() {
-    console.log("Fecthing places ...");
+  fetchPlaces() {
     return this.storage
       .get("places")
       .then((places: Place[]) => {
         this.places = places != null ? places : [];
         return this.places;
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(err => console.log(err));
   }
   /**
    * Delete a place
