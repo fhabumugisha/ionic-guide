@@ -1,3 +1,4 @@
+import { PlacesService } from "./../../services/places";
 import { Place } from "./../../models/place";
 import { Component } from "@angular/core";
 import { IonicPage, NavParams, ViewController } from "ionic-angular";
@@ -9,12 +10,21 @@ import { IonicPage, NavParams, ViewController } from "ionic-angular";
 })
 export class PlacePage {
   place: Place;
-  constructor(public navParams: NavParams, private viewCtrl: ViewController) {
+  index: number;
+  constructor(
+    public navParams: NavParams,
+    private viewCtrl: ViewController,
+    private placesService: PlacesService
+  ) {
     this.place = this.navParams.get("place");
+    this.index = this.navParams.get("index");
   }
 
   onLeave() {
     this.viewCtrl.dismiss();
   }
-  onDelete() {}
+  onDelete() {
+    this.placesService.deletePlace(this.index);
+    this.onLeave();
+  }
 }

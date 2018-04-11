@@ -11,8 +11,12 @@ import {
 } from "ionic-angular";
 import { SetLocationPage } from "../set-location/set-location";
 import { Geolocation } from "@ionic-native/geolocation";
+import { File, Entry, FileError } from "@ionic-native/file";
+
 import { Camera, CameraOptions } from "@ionic-native/camera";
 import { PlacesService } from "../../services/places";
+
+declare var cordova: any;
 @IonicPage()
 @Component({
   selector: "page-add-place",
@@ -33,6 +37,7 @@ export class AddPlacePage {
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     private camera: Camera,
+    private file: File,
     private placesService: PlacesService
   ) {}
 
@@ -51,6 +56,7 @@ export class AddPlacePage {
     this.imageUrl = "";
     this.location = new Location(51.678418, 7.809007);
     this.locationIsSet = false;
+    this.navCtrl.popToRoot();
   }
   onLocate() {
     let load = this.loadingCtrl.create({
@@ -98,7 +104,19 @@ export class AddPlacePage {
     this.camera
       .getPicture(options)
       .then(imageData => {
-        console.log("ImageData : ", imageData);
+        let imageName = imageData.replace(/^.*[\\\/]/, "");
+        let path = imageData.replace(/[^\/]*$/, "");
+        this.file
+          .moveFile(path, imageName, cordova.file.dataDirectory, imageName)
+          .then((data: Entry) => {
+            this.imageUrl = data.nativeURL;
+            this.camera.cleanup();
+          })
+          .catch((error: FileError) => {
+            this.imageUrl = "";
+            this.camera.cleanup();
+            this.presentToast("Error saving the file : " + error, "danger");
+          });
         this.imageUrl = imageData;
       })
       .catch(error => {
