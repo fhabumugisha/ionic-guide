@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2 text-center>Welcome to 7s!</h2>
+  <p>
+    <button ion-button block outline (click)="onCreateAccount()" >Create account</button>
+  </p>
+  <p>
+    <button ion-button block>Continue with Google</button>
+  </p>
+  <p>
+    Already user ?  <a (click)="onLogin()">Log in</a>
+  </p>
+</ion-content>

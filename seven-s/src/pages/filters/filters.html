@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Filters
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page12">
+  <form id="filters-form8">
+    <ion-item id="filters-toggle7">
+      <ion-label>
+        Surf
+      </ion-label>
+      <ion-toggle color="positive" checked="true"></ion-toggle>
+    </ion-item>
+    <ion-item id="filters-input11">
+      <ion-label>
+        Input
+      </ion-label>
+      <ion-input type="text" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item id="filters-toggle8">
+      <ion-label>
+        Skate
+      </ion-label>
+      <ion-toggle color="positive" checked="false"></ion-toggle>
+    </ion-item>
+    <ion-item id="filters-select2">
+      <ion-label>
+        Select
+      </ion-label>
+      <ion-select name="">
+        <ion-option>
+          Soup
+        </ion-option>
+        <ion-option>
+          Soap
+        </ion-option>
+        <ion-option>
+          Salvation
+        </ion-option>
+        <ion-option>
+          Stay
+        </ion-option>
+      </ion-select>
+    </ion-item>
+  </form>
+  <button id="filters-button9" ion-button color="positive" block on-click="goToExplorer()">
+    Apply filters
+  </button>
+</ion-content>
