@@ -1,58 +1,73 @@
-<ion-header>
-  <ion-navbar color="primary">
-    <ion-title text-center>
-      Explorer
-    </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon name="options"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
+<ion-header padding>
+      <ion-searchbar placeholder="Where" (click)="onOpenLocationModal()" name="" id="explorer-search1"></ion-searchbar>
+      
 </ion-header>
 <ion-content padding id="page10">
-  <form id="explorer-form6">
-    <ion-searchbar placeholder="Where" name="" id="explorer-search1"></ion-searchbar>
+ 
+    <!-- <ion-searchbar placeholder="Where" name="" id="explorer-search1"></ion-searchbar> -->
     <ion-grid>
      <ion-row>
-     <ion-col col-12>
-    
-    <ion-item>
-     When ?
-      </ion-item>
-    </ion-col>
-   
+     <ion-col col-10>
+       <button ion-button small  outline  (click)="openCalendar()">
+        Dates
+      </button>
+     </ion-col>
+     <ion-col col-2>
+     <button  ion-button icon-only small outline  (click)="onOpenModal()">
+        <ion-icon name="options"></ion-icon>
+      </button>
+     </ion-col>
      </ion-row>
-  <ion-row>
-    <ion-col col-6>
-    <ion-item>
-      <ion-input type="date" ></ion-input>
-    </ion-item>
+     
+     <ion-row>
+    <ion-col col-12>
+    <h4> What are you looking for ? </h4>
     </ion-col>
-    <ion-col col-6>
-    <ion-item>
-     <ion-input type="date" ></ion-input>
-     </ion-item>
+    </ion-row>
+ 
+   <ion-row>
+    <ion-col col-4>
+    <button ion-button icon-start outline>
+         <ion-icon name="home"></ion-icon>
+         Hosts
+        </button>    
     </ion-col>
-  </ion-row>
+    <ion-col col-4>
+    <button ion-button icon-start outline>
+        <ion-icon name="plane"></ion-icon>
+        Trippers
+    </button>       
+    </ion-col>
+    <ion-col col-4>    
+     <button ion-button icon-start outline>
+            <ion-icon name="calendar"></ion-icon>
+           Events
+      </button>    
+    </ion-col>
+    </ion-row>
   
-</ion-grid>
-  </form>
-  <button id="editTrip-button8" ion-button color="positive" block >
+ <ion-row>
+ <ion-col col-12>
+ <button id="editTrip-button8" (click)="onFind()" ion-button color="positive" block >
     Find
   </button>
+ </ion-col>
+ </ion-row>
+</ion-grid>
+
+  
   <ion-card id="explorer-card23">
     <ion-list>
       <ion-item color="none" on-click="goToUserDetail()" id="explorer-list-item22">
         <ion-avatar item-left>
-          <img src="assets/img/mOSpOGrAT6iMfCZKwZcr_Copyof1024px1024pxUntitledDesign.png" />
+          <img src="assets/img/pexels-photo-3.jpeg" height="100%"  />
         </ion-avatar>
         <h2>
           Samuel JOHNSON
         </h2>
       </ion-item>
       <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">
-        <img src="assets/img/O3ojmELxSAO2KfAU6q3p_Untitleddesign.png" />
+        <img src="assets/img/pexels-photo-4.jpeg"  height="100%"  />
       </div>
       <ion-item id="explorer-list-item-container12">
         <div id="explorer-markdown12" class="show-list-numbers-and-dots">
@@ -81,7 +96,7 @@
         </h2>
       </ion-item>
       <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">
-        <img src="assets/img/O3ojmELxSAO2KfAU6q3p_Untitleddesign.png" />
+        <img src="assets/img/pexels-photo.jpg"  height="100%"  />
       </div>
       <ion-item id="explorer-list-item-container13">
         <div id="explorer-markdown15" class="show-list-numbers-and-dots">

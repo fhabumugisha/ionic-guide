@@ -20,11 +20,17 @@ import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { MyPopOverPage} from "../pages/my-pop-over/my-pop-over"
 import { AuthService } from '../services/auth';
+import { ExplorerOptionsPage} from "../pages/explorer-options/explorer-options";
+import { DetailTripPage} from "../pages/detail-trip/detail-trip";
+import {LocationOptionsPage } from "../pages/location-options/location-options";
+import { CalendarModule } from "ion2-calendar";
 @NgModule({
   declarations: [
     MyApp,
     WelcomeTo7SPage,
     MyTripsPage,
+    LocationOptionsPage,
+    DetailTripPage,
     MessagesPage,
     TabsControllerPage,
     PagePage,
@@ -37,17 +43,21 @@ import { AuthService } from '../services/auth';
     FiltersPage,
     UserDetailPage,
     DetailMessagePage,
-    MyPopOverPage
+    MyPopOverPage,
+    ExplorerOptionsPage
   ],
-  imports: [BrowserModule, IonicModule.forRoot(MyApp)],
+  imports: [BrowserModule, IonicModule.forRoot(MyApp, {tabsHideOnSubPages :true}), CalendarModule],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     WelcomeTo7SPage,
     MyTripsPage,
+    LocationOptionsPage,
+    DetailTripPage,
     MessagesPage,
     TabsControllerPage,
     PagePage,
+    ExplorerOptionsPage,
     ProfilPage,
     LoginPage,
     SignupPage,

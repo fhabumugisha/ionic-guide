@@ -22,7 +22,7 @@
         </h2>
       </ion-item>
       <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">
-        <img src="assets/img/O3ojmELxSAO2KfAU6q3p_Untitleddesign.png" />
+        <img src="assets/img/pexels-photo-6.jpeg"  height="100%"  />
       </div>
       <ion-item id="userDetail-list-item-container15">
         <div id="userDetail-markdown17" class="show-list-numbers-and-dots">
@@ -46,7 +46,39 @@
     </p>
   </div>
   <div class="spacer" style="width:300px;height:18px;" id="userDetail-spacer11"></div>
-  <button id="userDetail-button10" ion-button color="positive" block on-click="goToExplorer()">
-    Ask a stay
-  </button>
+  
+  <div padding>
+  <ion-segment [(ngModel)]="detail">
+    <ion-segment-button value="info">
+      Informations
+    </ion-segment-button>
+    <ion-segment-button value="other">
+      Other info
+    </ion-segment-button>
+  </ion-segment>
+</div>
+<div [ngSwitch]="detail">
+  <ion-list *ngSwitchCase="'info'">
+    <ion-item>      
+      <h2>Option</h2>
+    </ion-item>
+     <ion-item>      
+      <h2>Option 2</h2>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'other'">
+    <ion-item>
+      <h2>Option 3</h2>
+    </ion-item>
+    <ion-item>
+      <h2>Option 4</h2>
+    </ion-item>
+  </ion-list>
+</div>
 </ion-content>
+<ion-footer>
+<button id="userDetail-button10" ion-button color="positive" block on-click="goToExplorer()">
+    Send message
+  </button>
+</ion-footer>

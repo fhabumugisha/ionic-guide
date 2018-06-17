@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ExplorerPage } from '../explorer/explorer';
+
 
 
 @Component({
@@ -8,15 +8,12 @@ import { ExplorerPage } from '../explorer/explorer';
   templateUrl: 'user-detail.html'
 })
 export class UserDetailPage {
-
+detail: string = "info";
   constructor(public navCtrl: NavController) {
   }
   goToExplorer(params){
     if (!params) params = {};
-    this.navCtrl.push(ExplorerPage);
+    this.navCtrl.popToRoot();
   }
-  goToUserDetail(params){
-    if (!params) params = {};
-    this.navCtrl.push(UserDetailPage);
-  }
+  
 }

@@ -13,8 +13,9 @@ export class EditTripPage {
   }
   goToMyTrips(params){
     if (!params) params = {};
-    this.navCtrl.push(MyTripsPage);
-  }goToEditTrip(params){
+    this.navCtrl.popToRoot();
+  }
+  goToEditTrip(params){
     if (!params) params = {};
     this.navCtrl.push(EditTripPage);
   }

@@ -1,0 +1,54 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title text-center>My trip Hawaii</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ <ion-card id="myTrips-card21">
+    <ion-list>
+      <ion-item color="none"  id="myTrips-list-item9">
+        <ion-icon name="map" item-left></ion-icon>
+        My trip Hawaii
+      </ion-item>
+      <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">
+        <img src="assets/img/pexels-photo-1.jpeg" height="100%" />
+      </div>
+      <ion-item id="myTrips-list-item-container2">
+        <div id="myTrips-markdown9" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#000000;">
+            Some friendly
+            <strong>
+              markdown
+            </strong>
+          </p>
+        </div>
+      </ion-item>
+      <ion-item color="positive" id="myTrips-list-item10">
+        <ion-icon name="moon" item-left></ion-icon>
+        Very nice
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+   <ion-card>
+   <ion-card-header>
+    Photos
+  </ion-card-header>
+   <ion-card-content>
+   <ion-slides>
+    <ion-slide *ngFor="let slide of slides">
+      
+      <img [src]="slide.image" class="slide-image"/>
+      <!-- <h2 class="slide-title" [innerHTML]="slide.title"></h2> -->
+      <p [innerHTML]="slide.description"></p>
+    </ion-slide>
+   
+</ion-slides>
+</ion-card-content>
+ </ion-card>
+</ion-content>
