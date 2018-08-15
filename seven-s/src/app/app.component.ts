@@ -20,7 +20,8 @@ export class MyApp {
     splashScreen: SplashScreen
   ) {
     firebase.initializeApp({
-      
+      apiKey: "AIzaSyBl4FE0R7sWuGELxfoYLd4cZKHcU9XI8uU",
+      authDomain: "seven-s-81593.firebaseapp.com"
     });
     firebase.auth().onAuthStateChanged(user => {
       if (user) {

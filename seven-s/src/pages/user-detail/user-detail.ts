@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import {EditMessagePage} from "../edit-message/edit-message"
 
 
 @Component({
@@ -14,6 +14,10 @@ detail: string = "info";
   goToExplorer(params){
     if (!params) params = {};
     this.navCtrl.popToRoot();
+  }
+
+  onSendMessage(){
+    this.navCtrl.push(EditMessagePage);
   }
   
 }

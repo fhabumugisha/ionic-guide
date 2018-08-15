@@ -6,13 +6,7 @@ import {
   PopoverController
 } from "ionic-angular";
 import { MyPopOverPage } from "../my-pop-over/my-pop-over";
-
-/**
- * Generated class for the DetailMessagePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {EditMessagePage} from "../edit-message/edit-message"
 
 @IonicPage()
 @Component({
@@ -40,7 +34,9 @@ export class DetailMessagePage implements OnInit {
 
   switchEmojiPicker() {}
 
-  sendMsg() {}
+  sendMsg() {
+    
+  }
   onFocus() {}
   openModal() {}
 

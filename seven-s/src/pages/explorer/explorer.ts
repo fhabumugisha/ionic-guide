@@ -14,12 +14,24 @@ export class ExplorerPage {
     optionsRange: CalendarComponentOptions = {
     pickMode: 'range'
   };
+
+  selectedCard = "";
   constructor(
     public navCtrl: NavController,
     private loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController
   ) {}
+
+  isSelectectCard(cardName: string){
+    if(this.selectedCard != cardName){
+      return true;
+    }else{
+      return false;
+    }
+
+  }
+
   goToUserDetail(params) {
     if (!params) params = {};
     this.navCtrl.push(UserDetailPage);
@@ -95,5 +107,30 @@ openCalendar() {
         myCalendar.onDidDismiss((date: { from: CalendarResult; to: CalendarResult }, type: string) => {
           console.log(date);
         });
+  }
+
+  onCardSelect(cardName: string){
+   //this.cardBgColor = "selectedCardBgColor";
+   this.selectedCard = cardName;
+   
+   /* if(event.target.classList.contains('button-outline')){
+    event.target.classList.remove('button-outline'); // To Remove
+     event.target.classList.remove('button-outline-wp'); // To Remove
+   }else{
+      event.target.classList.add('button-outline'); // To Remove
+     event.target.classList.add('button-outline-wp'); // To Remove
+   } */
+     /* event.target.classList.remove('button-outline'); // To Remove
+     event.target.classList.remove('button-outline-wp'); // To Remove */
+
+     
+   /* if(event.target.parentElement.style.background !== "#488aff"){
+    event.target.parentElement.style.background = "#488aff";
+   }else{
+     event.target.parentElement.style.background = "#fff";
+   } */
+  // event.target.parentElement.style.background = "#488aff";
+   
+    
   }
 }

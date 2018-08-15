@@ -23,6 +23,7 @@ import { AuthService } from '../services/auth';
 import { ExplorerOptionsPage} from "../pages/explorer-options/explorer-options";
 import { DetailTripPage} from "../pages/detail-trip/detail-trip";
 import {LocationOptionsPage } from "../pages/location-options/location-options";
+import { EditMessagePage } from "../pages/edit-message/edit-message";
 import { CalendarModule } from "ion2-calendar";
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CalendarModule } from "ion2-calendar";
     UserDetailPage,
     DetailMessagePage,
     MyPopOverPage,
-    ExplorerOptionsPage
+    ExplorerOptionsPage,
+    EditMessagePage
   ],
   imports: [BrowserModule, IonicModule.forRoot(MyApp, {tabsHideOnSubPages :true}), CalendarModule],
   bootstrap: [IonicApp],
@@ -67,7 +69,8 @@ import { CalendarModule } from "ion2-calendar";
     FiltersPage,
     UserDetailPage,
     DetailMessagePage,
-    MyPopOverPage
+    MyPopOverPage,
+    EditMessagePage
   ],
   providers: [
     StatusBar,

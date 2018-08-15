@@ -1,0 +1,8 @@
+{
+  "name": "drupal-client",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

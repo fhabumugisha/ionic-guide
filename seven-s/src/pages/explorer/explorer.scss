@@ -1,3 +1,28 @@
 page-explorer {
+ion-scroll {
+    white-space: nowrap ;
+    height: 70px;
+     ion-card {
+        display: inline-block;   
+        cursor: pointer;
+        .card-md {
+            width : 35% !important;
+        }
+        
+    }
+     .card-md {
+            width : 35% !important;
+            //background : map-get($colors, defaultCardBgColor);
+        }
 
+      /*   ion-icon {
+            font-size :
+        } */
+
+        
+}
+
+ /* .card-md {
+            width : 35% !important;
+        } */
 }

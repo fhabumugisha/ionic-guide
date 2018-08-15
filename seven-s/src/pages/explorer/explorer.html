@@ -24,28 +24,63 @@
     <h4> What are you looking for ? </h4>
     </ion-col>
     </ion-row>
- 
-   <ion-row>
+ </ion-grid>
+ <ion-scroll scrollX="true" >
+
+<button ion-button icon-start small  [outline]="isSelectectCard('hosts')" (click)="onCardSelect('hosts')" >
+         <ion-icon name="home"></ion-icon>
+         Hosts
+        </button> 
+ <button ion-button icon-start small  [outline]="isSelectectCard('trippers')" (click)="onCardSelect('trippers')">
+        <ion-icon name="plane"></ion-icon>
+        Trippers
+    </button> 
+    <button ion-button icon-start small [outline]="isSelectectCard('events')"  (click)="onCardSelect('events')">
+            <ion-icon name="calendar"></ion-icon>
+           Events
+      </button>
+
+  <button ion-button icon-start small [outline]="isSelectectCard('partners')" (click)="onCardSelect('partners')">
+            <ion-icon name="people"></ion-icon>
+           Partners
+      </button>
+
+</ion-scroll>
+   <!--   <ion-buttons >
+ <button ion-button icon-start small outline >
+         <ion-icon name="home"></ion-icon>
+         Hosts
+        </button> 
+ <button ion-button icon-start small outline>
+        <ion-icon name="plane"></ion-icon>
+        Trippers
+    </button> 
+    <button ion-button icon-start small outline>
+            <ion-icon name="calendar"></ion-icon>
+           Events
+      </button>
+ </ion-buttons> -->
+  <!--  <ion-row>
     <ion-col col-4>
-    <button ion-button icon-start outline>
+    <button ion-button icon-start small outline>
          <ion-icon name="home"></ion-icon>
          Hosts
         </button>    
     </ion-col>
     <ion-col col-4>
-    <button ion-button icon-start outline>
+    <button ion-button icon-start small outline>
         <ion-icon name="plane"></ion-icon>
         Trippers
     </button>       
     </ion-col>
     <ion-col col-4>    
-     <button ion-button icon-start outline>
+     <button ion-button icon-start small outline>
             <ion-icon name="calendar"></ion-icon>
            Events
       </button>    
     </ion-col>
-    </ion-row>
-  
+    </ion-row> -->
+  <ion-grid>
  <ion-row>
  <ion-col col-12>
  <button id="editTrip-button8" (click)="onFind()" ion-button color="positive" block >
