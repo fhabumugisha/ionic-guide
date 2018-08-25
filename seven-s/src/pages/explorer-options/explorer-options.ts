@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, ViewController } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { IonicPage, ViewController } from "ionic-angular";
 
 /**
  * Generated class for the ExplorerOptionsPage page.
@@ -10,20 +10,17 @@ import { IonicPage, ViewController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-explorer-options',
-  templateUrl: 'explorer-options.html',
+  selector: "page-explorer-options",
+  templateUrl: "explorer-options.html"
 })
 export class ExplorerOptionsPage {
+  structure: any = { lower: 18, upper: 70 };
+  constructor(public viewCtrl: ViewController) {}
 
-  constructor(public viewCtrl: ViewController) {
-
-  }
-
-dismiss() {
+  dismiss() {
     this.viewCtrl.dismiss();
-}
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ExplorerOptionsPage');
   }
-
+  ionViewDidLoad() {
+    console.log("ionViewDidLoad ExplorerOptionsPage");
+  }
 }

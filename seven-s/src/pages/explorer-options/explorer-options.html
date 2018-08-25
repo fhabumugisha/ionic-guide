@@ -16,24 +16,28 @@
 <ion-content padding>
 
 <ion-list>
-  
+
+  <ion-item>
+    <ion-label>Surf</ion-label>
+    <ion-checkbox color="positive" checked="true"></ion-checkbox>
+  </ion-item>
 <ion-item>
-  <ion-range [(ngModel)]="brightness">
-    <ion-icon range-left small name="sunny"></ion-icon>
-    <ion-icon range-right name="sunny"></ion-icon>
-  </ion-range>
+  <ion-label>Snow</ion-label>
+  <ion-checkbox color="positive" ></ion-checkbox>
 </ion-item>
-   <ion-item>
-      <ion-toggle checked="false"></ion-toggle>
-      <ion-label>
-       Other option
-      </ion-label>
-      <ion-icon name='body' item-start></ion-icon>
+<ion-item>
+  <ion-label>Skate</ion-label>
+  <ion-checkbox color="positive" ></ion-checkbox>
 </ion-item>
 <ion-item>
   <ion-label>Soup</ion-label>
-  <ion-checkbox color="positive" checked="true"></ion-checkbox>
+  <ion-checkbox color="positive" ></ion-checkbox>
 </ion-item>
+<ion-item>
+  <ion-label>Soap</ion-label>
+  <ion-checkbox color="positive" ></ion-checkbox>
+</ion-item>
+
  <ion-item>
       <ion-label>Salvation</ion-label>
       <ion-checkbox color="positive"></ion-checkbox>
@@ -42,15 +46,20 @@
       <ion-label>Stay</ion-label>
       <ion-checkbox color="positive"></ion-checkbox>
     </ion-item>
+    <ion-item>
+      <ion-range dualKnobs="true" pin="true" [(ngModel)]="structure">
+        <ion-label range-left >Age from {{structure.lower}} years </ion-label>
+        <ion-label range-right> to  {{structure.upper}} years </ion-label>
+      </ion-range>
+    </ion-item>
+       <ion-item>
+          <ion-toggle checked="false"></ion-toggle>
+          <ion-label>
+           Verified members
+          </ion-label>
+          <ion-icon name='checkmark-circle' item-start></ion-icon>
+    </ion-item>
 
-<ion-item>
-    <ion-label>Other ptions</ion-label>
-    <ion-select [(ngModel)]="gaming">
-      <ion-option value="nes">Option 1</ion-option>
-      <ion-option value="n64">Option 2</ion-option>
-      
-    </ion-select>
-  </ion-item>
 </ion-list>
 </ion-content>
 <ion-footer>

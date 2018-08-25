@@ -46,34 +46,45 @@
     </p>
   </div>
   <div class="spacer" style="width:300px;height:18px;" id="userDetail-spacer11"></div>
-  
+
   <div padding>
   <ion-segment [(ngModel)]="detail">
     <ion-segment-button value="info">
-      Informations
+      Surf/Skate/Snow
     </ion-segment-button>
     <ion-segment-button value="other">
-      Other info
+      Soup/Salvation/Soap/Stay
     </ion-segment-button>
   </ion-segment>
 </div>
 <div [ngSwitch]="detail">
   <ion-list *ngSwitchCase="'info'">
-    <ion-item>      
-      <h2>Option</h2>
+    <ion-item>
+      <h2>Info sur les spots</h2>
     </ion-item>
-     <ion-item>      
-      <h2>Option 2</h2>
+     <ion-item>
+      <h2>infos des lieux où je surf</h2>
     </ion-item>
+    <ion-item>
+      <h2>infos des jours où je vais surfer</h2>
+    </ion-item>
+
   </ion-list>
 
   <ion-list *ngSwitchCase="'other'">
     <ion-item>
-      <h2>Option 3</h2>
+      <h2>on peut partager sur l’évangile, sur Jésus, sur la Bible, sur tous les sujets</h2>
     </ion-item>
     <ion-item>
-      <h2>Option 4</h2>
+      <h2>On propose de donner de la nourriture si besoin</h2>
     </ion-item>
+    <ion-item>
+      <h2>Douche possible/Rinçage du matos</h2>
+    </ion-item>
+    <ion-item>
+      <h2>on accueil : repas, café , logement</h2>
+    </ion-item>
+
   </ion-list>
 </div>
 </ion-content>
