@@ -1,21 +1,36 @@
 import { Component } from "@angular/core";
-import { NavController, AlertController, LoadingController, ModalController } from "ionic-angular";
+import {
+  NavController,
+  AlertController,
+  LoadingController,
+  ModalController
+} from "ionic-angular";
 import { UserDetailPage } from "../user-detail/user-detail";
-import { ExplorerOptionsPage} from "../explorer-options/explorer-options";
-import { LocationOptionsPage} from "../location-options/location-options";
-import { CalendarModal, CalendarComponentOptions, CalendarModalOptions, DayConfig, CalendarResult } from "ion2-calendar";
+import { ExplorerOptionsPage } from "../explorer-options/explorer-options";
+import { LocationOptionsPage } from "../location-options/location-options";
+
+import {
+  CalendarModal,
+  CalendarComponentOptions,
+  CalendarModalOptions,
+  DayConfig,
+  CalendarResult
+} from "ion2-calendar";
+import { ExplorerMapPage } from "../explorer-map/explorer-map";
+
 @Component({
   selector: "page-explorer",
   templateUrl: "explorer.html"
 })
 export class ExplorerPage {
-   dateRange: { from: string; to: string; };
-   type: 'string'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
-    optionsRange: CalendarComponentOptions = {
-    pickMode: 'range'
+  dateRange: { from: string; to: string };
+  type: "string"; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
+  optionsRange: CalendarComponentOptions = {
+    pickMode: "range"
   };
-
+  selectedPlace: string;
   selectedCard = "";
+  displayResult = false;
   constructor(
     public navCtrl: NavController,
     private loadingCtrl: LoadingController,
@@ -23,13 +38,12 @@ export class ExplorerPage {
     public modalCtrl: ModalController
   ) {}
 
-  isSelectectCard(cardName: string){
-    if(this.selectedCard != cardName){
+  isSelectectCard(cardName: string) {
+    if (this.selectedCard != cardName) {
       return true;
-    }else{
+    } else {
       return false;
     }
-
   }
 
   goToUserDetail(params) {
@@ -42,7 +56,7 @@ export class ExplorerPage {
   }
 
   ionViewDidLoad() {
-   // this.showConfirm();
+    // this.showConfirm();
   }
   showConfirm() {
     const confirm = this.alertCtrl.create({
@@ -71,66 +85,75 @@ export class ExplorerPage {
     confirm.present();
   }
 
-  onFind(){
-     const loading = this.loadingCtrl.create({
+  onFind() {
+    const loading = this.loadingCtrl.create({
       spinner: "crescent",
       content: "Searching..."
     });
     loading.present();
 
-     loading.dismiss();
+    loading.dismiss();
+    this.displayResult = true;
   }
 
-
-   onOpenModal() {
+  onOpenModal() {
     let modal = this.modalCtrl.create(ExplorerOptionsPage);
     modal.present();
-}
-
-  onOpenLocationModal() {
-    let modal = this.modalCtrl.create(LocationOptionsPage);
-    modal.present();
-}
-
-openCalendar() {
-        const options: CalendarModalOptions = {
-          pickMode: 'range',
-          title: 'RANGE'
-        };
-    
-        let myCalendar = this.modalCtrl.create(CalendarModal, {
-          options: options
-        });
-    
-        myCalendar.present();
-    
-        myCalendar.onDidDismiss((date: { from: CalendarResult; to: CalendarResult }, type: string) => {
-          console.log(date);
-        });
   }
 
-  onCardSelect(cardName: string){
-   //this.cardBgColor = "selectedCardBgColor";
-   this.selectedCard = cardName;
-   
-   /* if(event.target.classList.contains('button-outline')){
+  onOpenLocationModal() {
+    let modal = this.modalCtrl.create(ExplorerMapPage);
+    modal.present();
+    modal.onDidDismiss(data => {
+      if (data) {
+        console.log("selectedPlace : ", data.selectedPlace);
+        this.selectedPlace = data.selectedPlace;
+      }
+    });
+  }
+
+  openCalendar() {
+    const options: CalendarModalOptions = {
+      pickMode: "range",
+      title: "RANGE"
+    };
+
+    let myCalendar = this.modalCtrl.create(CalendarModal, {
+      options: options
+    });
+
+    myCalendar.present();
+
+    myCalendar.onDidDismiss(
+      (date: { from: CalendarResult; to: CalendarResult }, type: string) => {
+        // console.log(date);
+      }
+    );
+  }
+
+  onCardSelect(cardName: string) {
+    //this.cardBgColor = "selectedCardBgColor";
+    this.selectedCard = cardName;
+
+    /* if(event.target.classList.contains('button-outline')){
     event.target.classList.remove('button-outline'); // To Remove
      event.target.classList.remove('button-outline-wp'); // To Remove
    }else{
       event.target.classList.add('button-outline'); // To Remove
      event.target.classList.add('button-outline-wp'); // To Remove
    } */
-     /* event.target.classList.remove('button-outline'); // To Remove
+    /* event.target.classList.remove('button-outline'); // To Remove
      event.target.classList.remove('button-outline-wp'); // To Remove */
 
-     
-   /* if(event.target.parentElement.style.background !== "#488aff"){
+    /* if(event.target.parentElement.style.background !== "#488aff"){
     event.target.parentElement.style.background = "#488aff";
    }else{
      event.target.parentElement.style.background = "#fff";
    } */
-  // event.target.parentElement.style.background = "#488aff";
-   
-    
+    // event.target.parentElement.style.background = "#488aff";
+  }
+
+  goToMap() {
+    this.navCtrl.push(ExplorerMapPage);
   }
 }

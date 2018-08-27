@@ -21,6 +21,6 @@ export class ExplorerOptionsPage {
     this.viewCtrl.dismiss();
   }
   ionViewDidLoad() {
-    console.log("ionViewDidLoad ExplorerOptionsPage");
+    //console.log("ionViewDidLoad ExplorerOptionsPage");
   }
 }

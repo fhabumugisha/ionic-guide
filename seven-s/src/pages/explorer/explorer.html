@@ -1,5 +1,5 @@
 <ion-header padding>
-      <ion-searchbar placeholder="Where" (click)="onOpenLocationModal()" name="" id="explorer-search1"></ion-searchbar>
+      <ion-searchbar [(ngModel)]="selectedPlace" placeholder="Where" (click)="onOpenLocationModal()" name="selectedPlace" id="explorer-search1"></ion-searchbar>
 
 </ion-header>
 <ion-content padding id="page10">
@@ -91,9 +91,9 @@
 </ion-grid>
 
 
-  <ion-card id="explorer-card23">
+  <ion-card id="explorer-card23" *ngIf="displayResult" on-click="goToUserDetail()">
     <ion-list>
-      <ion-item color="none" on-click="goToUserDetail()" id="explorer-list-item22">
+      <ion-item color="none"  id="explorer-list-item22">
         <ion-avatar item-left>
           <img src="assets/img/pexels-photo-3.jpeg" height="100%"  />
         </ion-avatar>
@@ -120,9 +120,9 @@
       </ion-item>
     </ion-list>
   </ion-card>
-  <ion-card id="explorer-card28">
+  <ion-card id="explorer-card28" *ngIf="displayResult" on-click="goToUserDetail()">
     <ion-list>
-      <ion-item color="none" id="explorer-list-item26">
+      <ion-item color="none" id="explorer-list-item26" >
         <ion-avatar item-left>
           <img src="assets/img/OUeoafaVRvKEHfLbWVzQ_Copyof1024px1024pxUntitledDesign.png" />
         </ion-avatar>
@@ -149,4 +149,7 @@
       </ion-item>
     </ion-list>
   </ion-card>
+  <ion-fab right bottom>
+    <button ion-fab color="positive" on-click="goToMap()" ><ion-icon name="map"></ion-icon></button>
+  </ion-fab>
 </ion-content>

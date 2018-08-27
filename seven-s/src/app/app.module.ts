@@ -15,16 +15,20 @@ import { MessageThreadPage } from "../pages/message-thread/message-thread";
 import { EditTripPage } from "../pages/edit-trip/edit-trip";
 import { FiltersPage } from "../pages/filters/filters";
 import { UserDetailPage } from "../pages/user-detail/user-detail";
-import { DetailMessagePage} from "../pages/detail-message/detail-message"
+import { DetailMessagePage } from "../pages/detail-message/detail-message";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
-import { MyPopOverPage} from "../pages/my-pop-over/my-pop-over"
-import { AuthService } from '../services/auth';
-import { ExplorerOptionsPage} from "../pages/explorer-options/explorer-options";
-import { DetailTripPage} from "../pages/detail-trip/detail-trip";
-import {LocationOptionsPage } from "../pages/location-options/location-options";
+import { MyPopOverPage } from "../pages/my-pop-over/my-pop-over";
+import { AuthService } from "../services/auth";
+import { ExplorerOptionsPage } from "../pages/explorer-options/explorer-options";
+import { DetailTripPage } from "../pages/detail-trip/detail-trip";
+import { LocationOptionsPage } from "../pages/location-options/location-options";
 import { EditMessagePage } from "../pages/edit-message/edit-message";
 import { CalendarModule } from "ion2-calendar";
+import { ExplorerMapPage } from "./../pages/explorer-map/explorer-map";
+import { Geolocation } from "@ionic-native/geolocation";
+import { PlacesPage } from "../pages/places/places";
+import { NativeGeocoder } from "@ionic-native/native-geocoder";
 @NgModule({
   declarations: [
     MyApp,
@@ -46,9 +50,16 @@ import { CalendarModule } from "ion2-calendar";
     DetailMessagePage,
     MyPopOverPage,
     ExplorerOptionsPage,
-    EditMessagePage
+    EditMessagePage,
+    ExplorerMapPage,
+    PlacesPage
   ],
-  imports: [BrowserModule, IonicModule.forRoot(MyApp, {tabsHideOnSubPages :true}), CalendarModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(MyApp, { tabsHideOnSubPages: true }),
+    CalendarModule
+  ],
+
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -70,13 +81,17 @@ import { CalendarModule } from "ion2-calendar";
     UserDetailPage,
     DetailMessagePage,
     MyPopOverPage,
-    EditMessagePage
+    EditMessagePage,
+    ExplorerMapPage,
+    PlacesPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AuthService
+    AuthService,
+    Geolocation,
+    NativeGeocoder
   ]
 })
 export class AppModule {}
