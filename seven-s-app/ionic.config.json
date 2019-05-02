@@ -1,0 +1,7 @@
+{
+  "name": "seven-s-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
